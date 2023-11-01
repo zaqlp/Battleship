@@ -1,0 +1,265 @@
+namespace Solution
+{
+    using System;
+    public class BattleshipField
+    {
+        public static bool ValidateBattlefield(int[,] field)
+        {
+            int[,] battlefield = field;
+            int dvojlod = 0;
+            int jednolod = 0;
+            int trojlod = 0;
+            int ctyrlod = 0;
+            int X = 0;
+            int Y = 0;
+            bool nejednolod =false;
+            while (  Y < 10)
+            {
+                X = 0;
+                while (X < 10)
+                {
+
+                    if (X > 0 && Y > 0)
+                    {
+                        if (battlefield[X - 1, Y - 1] == 1 && battlefield[X, Y] == 1)
+                        {
+                            Console.WriteLine("ahoj");
+                            return false;
+                        }
+                    }
+                    if (X > 0 && Y+1 < 10)
+                    {
+                        if (battlefield[X - 1, Y + 1] == 1 && battlefield[X, Y] == 1)
+                        {
+                            Console.WriteLine("ahoj1");
+                            return false;
+                        }
+                    }
+                    if (X+1 < 10 && Y+1 < 10)
+                    {
+                        if (battlefield[X + 1, Y + 1] == 1 && battlefield[X, Y] == 1)
+                        {
+                            Console.WriteLine("ahoj2");
+                            return false;
+                        }
+                    }
+                    if (X+1 < 10 && Y > 0)
+                    {
+                        if (battlefield[X + 1, Y - 1] == 1 && battlefield[X, Y] == 1)
+                        {
+                            Console.WriteLine("ahoj3");
+                            return false;
+                        }
+                    }
+
+
+                    if (field[X, Y] == 1)
+                    {
+                        field[X, Y] = 0;
+
+
+
+
+                        if (X - 1 > -1)
+                        {
+                            if (field[X - 1, Y] == 1)
+                            {
+
+                                field[X - 1, Y] = 0;
+                                if (X - 2 > -1)
+                                {
+
+
+                                    if (field[X - 2, Y] == 1)
+                                    {
+
+                                        field[X - 2, Y] = 0;
+                                        if (X - 3 > -1)
+                                        {
+                                            if (field[X - 3, Y] == 1)
+                                            {
+
+                                                field[X - 3, Y] = 0;
+
+                                                ctyrlod++;
+                                                nejednolod = true;
+
+                                            }
+                                            else
+                                            {
+                                                trojlod++;
+                                                nejednolod = true;
+
+                                            }
+                                        }
+                                    }
+                                    else
+                                    {
+                                        dvojlod++;
+                                        nejednolod = true;
+                                    }
+                                }
+                            }
+                        }
+                        
+                        if (Y - 1 > -1)
+                        {
+                            if (field[X, Y - 1] == 1)
+                            {
+                                field[X, Y - 1] = 0;
+                                if (Y - 2 > -1)
+                                {
+                                    if (field[X, Y - 2] == 1)
+                                    {
+                                        field[X, Y - 2] = 0;
+                                        if (Y - 3 > -1)
+                                        {
+                                            if (field[X, Y - 3] == 1)
+                                            {
+                                                field[X, Y - 3] = 0;
+
+                                                ctyrlod++;
+                                                nejednolod = true;
+
+                                            }
+                                            else
+                                            {
+                                                trojlod++;
+                                                nejednolod = true;
+                                            }
+                                        }
+                                    }
+                                    else
+                                    {
+                                        dvojlod++;
+                                        nejednolod = true;
+                                    }
+                                }
+                            }
+                        }
+                        
+
+                        if (Y + 1 < 10)
+                        {
+                            if (field[X, Y + 1] == 1)
+                            {
+                                field[X, Y + 1] = 0;
+                                if (Y + 2 < 10)
+                                {
+                                    if (field[X, Y + 2] == 1)
+                                    {
+                                        field[X, Y + 2] = 0;
+                                        if (Y + 3 < 10)
+                                        {
+                                            if (field[X, Y + 3] == 1)
+                                            {
+                                                field[X, Y + 3] = 0;
+
+                                                ctyrlod++;
+                                                nejednolod = true;
+
+                                            }
+                                            else
+                                            {
+                                                trojlod++;
+                                                nejednolod = true;
+                                            }
+                                        }
+                                    }
+                                    else
+                                    {
+                                        dvojlod++;
+                                        nejednolod = true;
+                                    }
+                                }
+
+                            }
+                        }
+
+                        
+
+                        if (X + 1 < 10)
+                        {
+                            if (field[X + 1, Y] == 1)
+                            {
+                                field[X + 1, Y] = 0;
+                                if (X + 2 < 10)
+                                {
+                                    if (field[X + 2, Y] == 1)
+                                    {
+                                        field[X + 2, Y] = 0;
+                                        if (X + 3 < 10)
+                                        {
+                                            if (field[X + 3, Y] == 1)
+                                            {
+                                                field[X + 3, Y] = 0;
+
+                                                ctyrlod++;
+                                                nejednolod = true;
+
+                                            }
+                                            else
+                                            {
+                                                trojlod++;
+                                                nejednolod = true;
+
+                                            }
+                                        }
+                                    }
+                                    else
+                                    {
+                                        dvojlod++;
+                                        nejednolod = true;
+                                    }
+                                }
+
+                            }
+                        }
+                        if (nejednolod == false) jednolod++;
+                        nejednolod = false;
+
+
+
+
+
+
+                    }
+                    X++;
+                }
+                Y++;
+
+            }
+            if (ctyrlod != 1)
+            {
+                Console.WriteLine("ahoj5");
+                return false;
+            }
+            if (trojlod != 2)
+            {
+                Console.WriteLine("ahoj6"); 
+                return false;
+            }
+
+            if (dvojlod != 3)
+            {
+                Console.WriteLine("ahoj7");
+                return false;
+            }
+            if (jednolod != 4)
+            {
+                Console.WriteLine("ahoj8"); 
+                return false;
+            }
+
+
+
+            // Write your magic here
+            return true;
+
+        }
+
+    
+         
+    
+  }
+}
